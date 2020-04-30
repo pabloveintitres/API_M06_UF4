@@ -7,7 +7,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Videogame extends Model
+class Comment extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -15,11 +15,12 @@ class Videogame extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'company', 'author', 'launch_date'
+        'author', 'date, videogame_id'
     ];
 
-    public function comments()
+    public function videogame()
     {
-        return $this->hasMany(Comment::class)->orderBy('create_at', 'DESC');
+        return $this->belongsTo(Videogame::class);
     }
+
 }

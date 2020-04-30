@@ -19,9 +19,10 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->string('author');
             $table->date('date');
-            $table->string('author');
-            $table->date('launch_date');
+            $table->foreignId('videogame_id');
             $table->timestamps();
+
+            $table->foreign('videogame_id')->references('id')->on('videogames');
         });
     }
 

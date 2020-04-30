@@ -7,10 +7,11 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Videogame;
+use App\Comment;
 use Validator;
 
 
-class VideogameController extends BaseController
+class CommentController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +20,10 @@ class VideogameController extends BaseController
      */
     public function index()
     {
-        $videogames = Videogame::all();
+        $comments = Comment::all();
 
 
-        return $this->sendResponse($videogames->toArray(), 'Videogames retrieved successfully.');
+        return $this->sendResponse($comments->toArray(), 'Comments retrieved successfully.');
     }
 
 
@@ -49,10 +50,10 @@ class VideogameController extends BaseController
         }
 
 
-        $videogame = Videogame::create($input);
+        $comment = Comment::create($input);
 
 
-        return $this->sendResponse($videogame->toArray(), 'Videogame created successfully.');
+        return $this->sendResponse($comment->toArray(), 'Comment created successfully.');
     }
 
 
@@ -64,15 +65,15 @@ class VideogameController extends BaseController
      */
     public function show($id)
     {
-        $videogame = Videogame::find($id);
+        $comment = Comment::find($id);
 
 
-        if (is_null($videogame)) {
-            return $this->sendError('Videogame not found.');
+        if (is_null($comment)) {
+            return $this->sendError('Comment not found.');
         }
 
 
-        return $this->sendResponse($videogame->toArray(), 'Videogame retrieved successfully.');
+        return $this->sendResponse($comment->toArray(), 'Comment retrieved successfully.');
     }
 
 
@@ -83,7 +84,7 @@ class VideogameController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, Videogame $videogame)
+    public function update(Request $request, Comment $comment)
     {
         $input = $request->all();
 
@@ -100,13 +101,13 @@ class VideogameController extends BaseController
         }
 
 
-        $videogame->name = $input['name'];
-        $videogame->company = $input['company'];
-        $videogame->author = $input['author'];
-        $videogame->save();
+        $comment->name = $input['name'];
+        $comment->company = $input['company'];
+        $comment->author = $input['author'];
+        $comment->save();
 
 
-        return $this->sendResponse($videogame->toArray(), 'Videogame updated successfully.');
+        return $this->sendResponse($comment->toArray(), 'Comment updated successfully.');
     }
 
 
@@ -116,11 +117,11 @@ class VideogameController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(Videogame $videogame)
+    public function destroy(Comment $comment)
     {
-        $videogame->delete();
+        $comment->delete();
 
 
-        return $this->sendResponse($videogame->toArray(), 'Videogame deleted successfully.');
+        return $this->sendResponse($comment->toArray(), 'Comment deleted successfully.');
     }
 }

@@ -24,3 +24,7 @@ Route::post('register', 'API\RegisterController@register');
 Route::middleware('auth:api')->group( function () {
     Route::resource('videogames', 'API\VideogameController');
 });
+
+Route::middleware('auth:api')->group( function () {
+    Route::resource('comments', 'API\CommentController');
+});

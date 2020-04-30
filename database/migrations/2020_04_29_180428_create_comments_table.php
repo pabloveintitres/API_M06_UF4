@@ -22,7 +22,7 @@ class CreateCommentsTable extends Migration
             $table->foreignId('videogame_id');
             $table->timestamps();
 
-            $table->foreign('videogame_id')->references('id')->on('videogames');
+//            $table->foreign('videogame_id')->references('id')->on('videogames');
         });
     }
 

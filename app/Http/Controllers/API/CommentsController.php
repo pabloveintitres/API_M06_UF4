@@ -124,4 +124,11 @@ class CommentController extends BaseController
 
         return $this->sendResponse($comment->toArray(), 'Comment deleted successfully.');
     }
+
+    public function userComments ($author) {
+
+        $comments = Comment::all()->where('author', '=', $author);
+
+        return $this->sendResponse($comments->toArray(), 'Comments from author' . $author);
+    }
 }

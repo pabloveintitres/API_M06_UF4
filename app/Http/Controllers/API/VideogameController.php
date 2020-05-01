@@ -113,14 +113,28 @@ class VideogameController extends BaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Videogame $videogame
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function destroy(Videogame $videogame)
     {
         $videogame->delete();
 
-
         return $this->sendResponse($videogame->toArray(), 'Videogame deleted successfully.');
+    }
+
+
+    /**
+     * Show all comments from an especific videogame.
+     *
+     * @param  Videogame  $videogame
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function allComments (Videogame $videogame)
+    {
+       $comments = $videogame->comments;
+
+       return $this->sendResponse($comments->toArray(), 'Comments from Videogame: ' . $videogame->name);
     }
 }

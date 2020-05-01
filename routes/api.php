@@ -21,6 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('register', 'API\RegisterController@register');
 
+Route::middleware('auth:api')->get('/commentsfrom?author={author}', 'API\CommentController@userComments');
+
+Route::middleware('auth:api')->get('/videogames/{videogame}/comments', 'API\VideogameController@allComments');
+
 Route::middleware('auth:api')->group( function () {
     Route::resource('videogames', 'API\VideogameController');
 });
@@ -28,3 +32,7 @@ Route::middleware('auth:api')->group( function () {
 Route::middleware('auth:api')->group( function () {
     Route::resource('comments', 'API\CommentController');
 });
+
+
+
+

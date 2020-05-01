@@ -20,6 +20,6 @@ class Videogame extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class)->orderBy('create_at', 'DESC');
+        return $this->hasMany(Comment::class)->orderBy('created_at', 'DESC');
     }
 }

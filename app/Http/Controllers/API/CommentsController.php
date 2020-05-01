@@ -125,10 +125,19 @@ class CommentController extends BaseController
         return $this->sendResponse($comment->toArray(), 'Comment deleted successfully.');
     }
 
+
+    /**
+     * Show all comments from an specific author.
+     *
+     * @param  int  $author
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function userComments ($author) {
 
         $comments = Comment::all()->where('author', '=', $author);
 
-        return $this->sendResponse($comments->toArray(), 'Comments from author' . $author);
+//        dd($comments);
+
+        return $this->sendResponse($comments->toArray(), 'Comments from author: ' . $author);
     }
 }

@@ -19,10 +19,13 @@ class CommentsTableSeeder extends Seeder
 
             $id = random_int(1, 25);
 
+            $numWords = random_int(5, 15);
+
             Comment::create([
-                'author' => $faker->sentence(1),
+                'author' => $faker->name,
                 'date' => $faker->date(now()),
-                'videogame_id' => $id
+                'videogame_id' => $id,
+//                'text' => $faker->sentence($numWords)
             ]);
         }
     }

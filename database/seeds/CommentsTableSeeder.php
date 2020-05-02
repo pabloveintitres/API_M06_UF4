@@ -25,7 +25,7 @@ class CommentsTableSeeder extends Seeder
                 'author' => $faker->name,
                 'date' => $faker->date(now()),
                 'videogame_id' => $id,
-//                'text' => $faker->sentence($numWords)
+                'text' => $faker->sentence($numWords)
             ]);
         }
     }

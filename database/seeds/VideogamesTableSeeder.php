@@ -14,12 +14,11 @@ class VideogamesTableSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        // And now, let's create a few articles in our database:
         for ($i = 0; $i < 25; $i++) {
             Videogame::create([
-                'name' => $faker->sentence(1),
-                'company' => $faker->sentence(1),
-                'author' => $faker->sentence(1),
+                'name' => $faker->word(),
+                'company' => $faker->word(),
+                'author' => $faker->name,
                 'launch_date' => $faker->date(now())
             ]);
         }

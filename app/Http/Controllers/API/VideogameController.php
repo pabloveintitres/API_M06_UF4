@@ -85,26 +85,7 @@ class VideogameController extends BaseController
      */
     public function update(Request $request, Videogame $videogame)
     {
-        $input = $request->all();
-
-
-        $validator = Validator::make($input, [
-            'name' => 'required',
-            'company' => 'required',
-            'author' => 'required'
-        ]);
-
-
-        if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());
-        }
-
-
-        $videogame->name = $input['name'];
-        $videogame->company = $input['company'];
-        $videogame->author = $input['author'];
-        $videogame->save();
-
+        $videogame->update($request->all());
 
         return $this->sendResponse($videogame->toArray(), 'Videogame updated successfully.');
     }
